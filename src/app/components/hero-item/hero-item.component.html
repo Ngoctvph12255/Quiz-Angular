@@ -1,0 +1,13 @@
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" [src]="heroData.avatar" alt="Card image cap" style="width: 260px; height: 150px;"/>
+  <div class="card-body">
+    <h5 class="card-title">{{ heroData.name }}</h5>
+    <div class="card-body">
+      <h5>Thông tin</h5>
+      <p>Tuổi: {{ heroData.birthDate | getAge }} tuổi</p>
+      <p>Sức mạnh: {{ heroData.attack }}</p>
+      <p>Ngày sinh: {{ heroData.birthDate | date: "dd/MM/YYY" }}</p>
+      <button class="btn btn-info" (click)="remove()">Update</button>
+    </div>
+  </div>
+</div>

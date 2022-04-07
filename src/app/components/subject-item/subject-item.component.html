@@ -1,0 +1,10 @@
+
+<div class="card" style="width: 250px;">
+  <a [routerLink]="'/quiz/' + subjectData.Code">
+  <img class="card-img-top" src="./assets/images/logos/{{subjectData.Logo}}" alt=""/>
+  </a>
+  <div class="card-body">
+    <h4 class="card-title"> {{ subjectData.Name }}</h4>
+    <button [routerLink]="'/quiz/' + subjectData.Code" class="btn btn-outline-success">Start quiz</button>
+  </div>
+</div>

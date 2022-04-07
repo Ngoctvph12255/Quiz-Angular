@@ -1,0 +1,27 @@
+<input type="text" [(ngModel)]="keyword" (keyup)="search()">
+<button (click)="searchAnother()">jsa</button>
+<p>{{keyword}}</p>
+<br>
+<div class="row">
+  <article class="col-sm-9">
+    <div class="row">
+      <app-subject-item
+        class="col-md-3 col-sm-6"
+        *ngFor="let item of listSubjects"
+        [data-search]="item"
+      ></app-subject-item>
+    </div>
+  </article>
+  <aside class="col-md-3 col-sm-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="bi bi-list"></i>
+        <strong>Category</strong>
+      </div>
+
+      <div class="list-group" *ngFor="let sub of listSubjects">
+        <a [routerLink]="'/quiz/' + sub.Code" class="list-group-item">{{sub.Name}}</a>
+      </div>
+    </div>
+  </aside>
+</div>

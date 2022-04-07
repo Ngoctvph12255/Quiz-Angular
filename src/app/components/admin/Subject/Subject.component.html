@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Code</th>
+      <th scope="col">Name</th>
+      <th scope="col">Logo</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sub of listOfSubject">
+      <th scope="row">{{sub.id}}</th>
+      <td>{{sub.Code}}</td>
+      <td>{{sub.Name}}</td>
+      <td><img src="./assets/images/logos/{{sub.Logo}}" width="60px" height="60px" alt=""> </td>
+      <td>
+        <button (click)="onDetail(sub.Code)" class="btn btn-info">Detail</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

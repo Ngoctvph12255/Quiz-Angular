@@ -1,0 +1,27 @@
+<section>
+  <div class="container">
+    <div class="my-5" id="content">
+      <div class="row">
+        <div class="col">
+          <div class="card border-info">
+            <div class="card-body" *ngFor="let q of questions">
+              <p class="card-text" style="font-weight: 500">
+                {{ q.Text }}
+              </p>
+              <hr />
+              <div class="form-check" *ngFor="let a of q.Answers">
+                <input (change)="choose(q.Id, a.Id)" [id]="a.Id" type="radio" [value]="a.Id" [name]="q.Id" />
+                <label [for]="a.Id">{{ a.Text }}</label>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button [disabled]="disabledSubmit" class="btn btn-primary" (click)="submit()">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
