@@ -13,22 +13,12 @@ export class HomeLayoutComponent implements OnInit {
   search: any;
   isLoggedIn: boolean = false;
   loggedInUser: any = null;
-  // keyword = '';
   constructor(
     private authService: AuthService,
     private nodeService: NodeService
   ) {}
 
   ngOnInit() {
-    // this.nodeService.getNode(path).subscribe(
-    //   (node) => {
-    //     this.nodeService.addNode(node);
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //   }
-    // );
-
     this.authService.logInUser.subscribe((user) => {
       console.log('Home login', user);
       if (user.email != undefined && user.googleId != undefined) {

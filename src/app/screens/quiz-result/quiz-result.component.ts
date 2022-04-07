@@ -5,20 +5,26 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-quiz-result',
   templateUrl: './quiz-result.component.html',
-  styleUrls: ['./quiz-result.component.css']
+  styleUrls: ['./quiz-result.component.css'],
 })
 export class QuizResultComponent implements OnInit {
-
-  constructor(private route: ActivatedRoute,
-    private studentService: StudentService) { }
+  infoStudent: any;
+  subject_code: any;
+  constructor(
+    private route: ActivatedRoute,
+    private studentService: StudentService
+  ) {}
 
   ngOnInit() {
-     this.route.params.subscribe((pam) => {
-       this.studentService.findById((pam['idStudent'])).subscribe((stu) => {
-         let subject_code = pam['code'];
-         console.log(stu.marks[subject_code]);
-       });
-     });
+    this.route.params.subscribe((pam) => {
+      console.log(pam['idStudent']);
+      this.studentService.findById(pam['idStudent']).subscribe((stu) => {
+         this.subject_code = pam['id'];
+        this.infoStudent = stu
+        console.log(this.infoStudent.marks[this.subject_code]);
+        
+        //.marks[subject_code]
+      });
+    });
   }
-
 }

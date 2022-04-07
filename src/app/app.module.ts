@@ -1,3 +1,5 @@
+import { LoginAdminComponent } from './screens/login-admin/login-admin.component';
+import { LoginComponent } from './screens/login/login.component';
 import { EditStudentComponent } from './components/admin/EditStudent/EditStudent.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { DashboardComponent } from './components/admin/Dashboard/Dashboard.component';
@@ -24,6 +26,8 @@ import { EditSubjectComponent } from './components/admin/EditSubject/EditSubject
 import { RouterModule } from '@angular/router';
 import { GetAgePipe } from './helpers/pipes/get-age.pipe';
 import { SubjectComponent } from './components/admin/Subject/Subject.component';
+import { SocialLoginModule, SocialAuthService, GoogleLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -44,9 +48,9 @@ import { SubjectComponent } from './components/admin/Subject/Subject.component';
     AddStudentComponent,
     EditStudentComponent,
     AddQuestionComponent,
-    EditSubjectComponent
-    
-    
+    EditSubjectComponent,
+    LoginComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +60,22 @@ import { SubjectComponent } from './components/admin/Subject/Subject.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    SocialLoginModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(environment.GOOGLE_CLIENT_ID),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

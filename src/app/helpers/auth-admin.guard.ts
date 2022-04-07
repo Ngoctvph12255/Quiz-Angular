@@ -4,7 +4,7 @@ import { CanActivate, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AuthAdminGuard implements CanActivate {
   constructor(private router: Router) {}
   canActivate(): boolean {
     const loggedInUser = JSON.parse(localStorage.getItem('login_user') || '{}');
@@ -14,8 +14,8 @@ export class AuthGuard implements CanActivate {
       loggedInUser.googleId == undefined ||
       loggedInUser.googleId == ''
     ) {
-      this.router.navigate(['login']);
-      return false; 
+      this.router.navigate(['login-admin']);
+      return false;
     }
     return true;
   }

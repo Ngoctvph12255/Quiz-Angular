@@ -1,8 +1,12 @@
 <div class="container" style="min-height: 500px;">
-  <p>Result quiz</p>
-  <div class="d-flex flex-row">
-    <div class="cla" style="background-color: black; width: 100;">1</div>
-    <div class="cla" style="background-color: rebeccapurple; width: 100;">2</div>
-    <div class="cla" style="background-color: yellow; width: 100;">3</div>
+  <div class="card text-center">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Quiz Is Over</h5>
+      <p class="card-text">Your score: {{infoStudent.marks[this.subject_code]}} </p>
+      <a [routerLink]="'/quiz/' + this.subject_code" class="btn btn-primary">Play again</a>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
   </div>
-</div>

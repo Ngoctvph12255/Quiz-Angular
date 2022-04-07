@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { SetingService } from 'src/app/shared/services/seting.service';
 
 @Component({
@@ -12,12 +13,17 @@ export class AdminLayoutComponent implements OnInit {
 
   constructor(
     public setingService: SetingService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {}
 
   onCollapse() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  logoutAdmin(): void {
+    this.authService.logoutAdmin();
   }
 }

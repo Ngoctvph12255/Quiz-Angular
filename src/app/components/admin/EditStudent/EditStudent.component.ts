@@ -18,7 +18,7 @@ import * as moment from 'moment';
 })
 export class EditStudentComponent implements OnInit {
   studentForm: any;
-  listOfStudent: IStudent = {};
+  listOfStudent: any = {};
   id: string = '';
   constructor(
     private studentService: StudentService,
@@ -32,27 +32,22 @@ export class EditStudentComponent implements OnInit {
 
   private initForm(): void {
     this.studentForm = this.formBuilder.group({
-      fullname: [
-        this.listOfStudent?.fullname || '',
+      name: [
+        this.listOfStudent?.name || '',
         [Validators.required, Validators.minLength(5)],
       ],
-      username: [this.listOfStudent?.username || '', [Validators.required]],
-      password: [
-        this.listOfStudent?.password || '',
-        [Validators.required, Validators.minLength(6)],
-      ],
-      confirmPassword: ['', [Validators.required]],
+      firstName: [this.listOfStudent?.firstName || '', [Validators.required]],
       marks: [
         this.listOfStudent?.marks || '',
         [Validators.required, Validators.maxLength(100)],
       ],
-      schoolfee: [this.listOfStudent?.schoolfee || '', [Validators.required]],
+      avatar: [this.listOfStudent?.avatar || '', [Validators.required]],
       email: [this.listOfStudent?.email || '', [Validators.required]],
-      birthday: [
-        moment(this.listOfStudent?.birthday).format('yyyy-MM-DD') || '',
-        [Validators.required],
-      ],
-      gender: [this.listOfStudent?.gender || 'false'],
+      // birthday: [
+      //   moment(this.listOfStudent?.birthday).format('yyyy-MM-DD') || '',
+      //   [Validators.required],
+      // ],
+      // gender: [this.listOfStudent?.gender || 'false'],
     });
   }
 

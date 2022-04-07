@@ -9,13 +9,13 @@
       "avatar": "https://lh3.googleusercontent.com/a/AATXAJzK1Y23lpPZUQKGhatx460B2p65w8AL7RFsapgV=s96-c",
       "gender": "true",
       "marks": {
-        "LAYO": "3.00",
-        "ADAV": "1.00",
-        "ADBS": "1.00"
+        "LAYO": "9.00",
+        "ADAV": "10.00",
+        "ADBS": "10.00"
       }
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "NgocTV",
       "firstName": "Trịnh Văn Ngọc External",
       "email": "ngoctvph12255@gmail.com",
@@ -24,45 +24,8 @@
       "gender": "true",
       "marks": {
         "LAYO": "3.00",
-        "ADAV": "0.00"
+        "ADAV": "10.00"
       }
-    },
-    {
-      "id": 3,
-      "username": "nopt",
-      "password": "iloveyou",
-      "fullname": "Phạm Thị Nở",
-      "email": "nopt@fpt.edu.vn",
-      "gender": "false",
-      "birthday": "1993-05-15",
-      "schoolfee": "2000000",
-      "marks": {
-        "undefined": "NaN"
-      }
-    },
-    {
-      "username": "thienth",
-      "password": "123456",
-      "fullname": "trần hữu thiện",
-      "email": "thienth@gmail.com",
-      "gender": "true",
-      "birthday": "1991-01-01",
-      "schoolfee": "11000",
-      "marks": {},
-      "id": 4
-    },
-    {
-      "fullname": "thienth",
-      "username": "thienth",
-      "email": "thienth3@fe.edu.vn",
-      "password": "123456",
-      "gender": "true",
-      "birthday": "1990-12-31T17:00:00.000Z",
-      "schoolfee": 100,
-      "marks": {
-        "LAYO": "3.00"
-      },
-      "id": 5
     }
   ],
   "subjects": [

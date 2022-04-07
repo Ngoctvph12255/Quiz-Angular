@@ -9,22 +9,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="mon-hoc">Subject</a>
+            <a class="nav-link active" routerLink="mon-hoc">Subject</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" routerLink="login">Sign in</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="register"
-              >Sign up</a
-            >
-          </li> -->
           <li class="nav-item">
-            <a (click)="logout()" class="nav-link active" aria-current="page">Logout</a>
+            <a (click)="logout()" class="nav-link active">Logout</a>
           </li>
-          <!-- <li class="nav-item d-flex" *ngIf="isLoggedIn">
-            <a class="nav-link active">Hello {{ loggedInUser.firstName }}</a>
-          </li> -->
         </ul>
         <div *ngIf="isLoggedIn" style="margin-right: 20px">
           Hello {{ loggedInUser.firstName }}
