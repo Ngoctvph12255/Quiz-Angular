@@ -10,8 +10,8 @@
               </p>
               <hr />
               <div class="form-check" *ngFor="let a of q.Answers">
-                <input (change)="choose(q.Id, a.Id)" [id]="a.Id" type="radio" [value]="a.Id" [name]="q.Id" />
-                <label [for]="a.Id">{{ a.Text }}</label>
+                <input (change)="choose(q.id, a.id)" [id]="a.id" type="radio" [value]="a.id" [name]="q.id" />
+                <label [for]="a.id">{{ a.Text }}</label>
               </div>
             </div>
             <div class="card-footer">
@@ -24,4 +24,4 @@
       </div>
     </div>
   </div>
-</section>
+</section> 

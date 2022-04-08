@@ -59,12 +59,12 @@ const routes: Routes = [
       {
         path: 'sinh-vien/add',
         component: AddStudentComponent,
-        // canActivate: [AuthAdminGuard],
+        canActivate: [AuthAdminGuard],
       },
       {
         path: 'sinh-vien/edit/:id',
         component: EditStudentComponent,
-        // canActivate: [AuthAdminGuard],
+        canActivate: [AuthAdminGuard],
       },
       {
         path: 'mon-hoc',
@@ -73,12 +73,12 @@ const routes: Routes = [
       {
         path: 'mon-hoc/add',
         component: AddQuestionComponent,
-        // canActivate: [AuthAdminGuard],
+        canActivate: [AuthAdminGuard],
       },
       {
         path: 'mon-hoc/edit/:id',
         component: EditSubjectComponent,
-        // canActivate: [AuthAdminGuard],
+        canActivate: [AuthAdminGuard],
       },
     ],
   },

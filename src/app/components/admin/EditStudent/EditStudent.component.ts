@@ -2,14 +2,10 @@ import { ActivatedRoute } from '@angular/router';
 import { StudentService } from 'src/app/shared/services/student.service';
 import { IStudent } from './../../../shared/models/student';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { comparePasswordValidator } from 'src/app/helpers/validators/comparePassword';
 import * as moment from 'moment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-EditStudent',
@@ -23,7 +19,8 @@ export class EditStudentComponent implements OnInit {
   constructor(
     private studentService: StudentService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {
     this.route.params.subscribe((parms) => {
       this.id = parms['id'];
@@ -37,17 +34,25 @@ export class EditStudentComponent implements OnInit {
         [Validators.required, Validators.minLength(5)],
       ],
       firstName: [this.listOfStudent?.firstName || '', [Validators.required]],
-      marks: [
-        this.listOfStudent?.marks || '',
-        [Validators.required, Validators.maxLength(100)],
+      email: [
+        { value: this.listOfStudent?.email || '', disabled: true },
+        [Validators.required],
       ],
       avatar: [this.listOfStudent?.avatar || '', [Validators.required]],
-      email: [this.listOfStudent?.email || '', [Validators.required]],
+      gender: [this.listOfStudent?.gender || false, [Validators.required]],
+      googleId: [
+        { value: this.listOfStudent?.googleId || '', disabled: true },
+        [Validators.required],
+      ],
       // birthday: [
       //   moment(this.listOfStudent?.birthday).format('yyyy-MM-DD') || '',
       //   [Validators.required],
       // ],
       // gender: [this.listOfStudent?.gender || 'false'],
+      marks: [
+        this.listOfStudent?.marks || '',
+        [Validators.required, Validators.maxLength(100)],
+      ],
     });
   }
 
@@ -72,9 +77,12 @@ export class EditStudentComponent implements OnInit {
     delete this.studentForm?.value.confirmPassword;
     const student = { ...this.studentForm?.value };
     console.log(student);
-
+    if (this.studentForm.invalid) {
+      this.toastr.error('form điền vào không hợp lệ');
+      return;
+    }
     this.studentService.update(student, this.id).subscribe((rsp) => {
-      alert('Update successfully!');
+      this.toastr.success('Updated successfully !!', 'NgocTV.com');
     });
   }
 }

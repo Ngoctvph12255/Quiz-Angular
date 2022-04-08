@@ -1,20 +1,20 @@
 <div class="container-fluid">
   <div class="col-6 offset-3">
-    <h4 class="text-center">Thông tin sinh viên</h4>
+    <h4 class="text-center">Information Student </h4>
     <form [formGroup]="this.studentForm">
       <div class="form-group">
         <label for="">User name</label>
-        <input type="text" formControlName="username" class="form-control" />
+        <input type="text" formControlName="name" class="form-control" />
         <div
           *ngIf="
-            studentForm.controls['username'].errors &&
-            (studentForm.controls['username'].touched ||
-              studentForm.controls['username'].dirty)
+            studentForm.controls['name'].errors &&
+            (studentForm.controls['name'].touched ||
+              studentForm.controls['name'].dirty)
           "
         >
           <span
             class="text-danger"
-            *ngIf="studentForm.controls['username'].hasError('required')"
+            *ngIf="studentForm.controls['name'].hasError('required')"
             >Hãy nhập tên đăng nhập của bạn!</span
           >
         </div>
@@ -22,79 +22,23 @@
 
       <div class="form-group">
         <label for="">Full name</label>
-        <input type="text" formControlName="fullname" class="form-control" />
+        <input type="text" formControlName="firstName" class="form-control" />
         <div
           *ngIf="
-            studentForm.controls['fullname'].errors &&
-            (studentForm.controls['fullname'].touched ||
-              studentForm.controls['fullname'].dirty)
+            studentForm.controls['firstName'].errors &&
+            (studentForm.controls['firstName'].touched ||
+              studentForm.controls['firstName'].dirty)
           "
         >
           <span
             class="text-danger"
-            *ngIf="studentForm.controls['fullname'].hasError('required')"
+            *ngIf="studentForm.controls['firstName'].hasError('required')"
             >Hãy nhập họ tên của bạn!</span
           >
         </div>
       </div>
       <div class="form-group">
-        <label for="">Password</label>
-        <input
-          type="password"
-          formControlName="password"
-          class="form-control"
-        />
-        <div
-          *ngIf="
-            studentForm.controls['password'].errors &&
-            (studentForm.controls['password'].touched ||
-              studentForm.controls['password'].dirty)
-          "
-        >
-          <span
-            class="text-danger"
-            *ngIf="studentForm.controls['password'].hasError('required')"
-            >Hãy nhập mật khẩu!</span
-          >
-          <span
-            class="text-danger"
-            *ngIf="studentForm.controls['password'].hasError('minlength')"
-            >Mật khẩu ít nhất 6 ký tự!</span
-          >
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="">Confirm Password</label>
-        <input
-          type="password"
-          formControlName="confirmPassword"
-          class="form-control"
-        />
-        <div
-          *ngIf="
-            studentForm.controls['confirmPassword'].errors &&
-            (studentForm.controls['confirmPassword'].touched ||
-              studentForm.controls['confirmPassword'].dirty)
-          "
-        >
-          <span
-            class="text-danger"
-            *ngIf="studentForm.controls['confirmPassword'].hasError('required')"
-            >Hãy nhập xác nhận mật khẩu</span
-          >
-          <span
-            class="text-danger"
-            *ngIf="
-              studentForm.controls['confirmPassword'].hasError(
-                'matchConfirmPassword'
-              )
-            "
-            >Xác nhận mật khẩu chưa khớp!</span
-          >
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="">Email</label>
+        <label for="">email</label>
         <input type="text" formControlName="email" class="form-control" />
         <div
           *ngIf="
@@ -116,6 +60,22 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="">Avatar</label>
+        <input type="text" formControlName="avatar" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="">Google Id</label>
+        <input type="text" formControlName="googleId" class="form-control" />
+        <div *ngIf="
+                    studentForm.controls['googleId'].errors &&
+                    (studentForm.controls['googleId'].touched ||
+                      studentForm.controls['googleId'].dirty)
+                  ">
+          <span class="text-danger" *ngIf="studentForm.controls['googleId'].hasError('required')">Hãy nhập googleId của
+            bạn!</span>
+        </div>
+      </div>
+      <div class="form-group">
         <label for="">Gender</label>
         <div class="form-check">
           <input
@@ -126,7 +86,7 @@
             [value]="true"
           />
           <label class="form-check-label" for="flexRadioDefault1">
-            Nữ
+            Male
           </label>
         </div>
         <div class="form-check">
@@ -139,33 +99,16 @@
             [value]="false"
           />
           <label class="form-check-label" for="flexRadioDefault2">
-            Nam
+            Female
           </label>
         </div>
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="">birth Date</label>
         <input type="date" formControlName="birthday" class="form-control" />
         
-      </div>
-      <div class="form-group">
-        <label for="">School fee</label>
-        <input type="text" formControlName="schoolfee" class="form-control" />
-        <div
-          *ngIf="
-            studentForm.controls['schoolfee'].errors &&
-            (studentForm.controls['schoolfee'].touched ||
-              studentForm.controls['schoolfee'].dirty)
-          "
-        >
-          <span
-            class="text-danger"
-            *ngIf="studentForm.controls['schoolfee'].hasError('required')"
-            >Hãy nhập học phí</span
-          >
-        </div>
-      </div>
-      <div class="form-group">
+      </div> -->
+      <!-- <div class="form-group">
         <label for="">marks</label>
         <input type="text" formControlName="marks" class="form-control" />
         <div
@@ -181,9 +124,9 @@
             >Hãy nhập điểm</span
           >
         </div>
-      </div>
+      </div> -->
       <div class="d-flex justify-content-center mt-3">
-        <button (click)="submitForm()" class="btn btn-outline-success">Lưu</button>
+        <button (click)="submitForm()" class="btn btn-outline-success"><i class="bi bt-plus"></i>Add</button>
       </div>
     </form>
   </div>

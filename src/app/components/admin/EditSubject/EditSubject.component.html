@@ -17,17 +17,17 @@
   <tbody>
     <tr *ngFor="let s of listOfQuiz; index as i">
       <th scope="col">{{ i }}</th>
-      <td>{{ s.Id }}</td>
+      <td>{{ s.id }}</td>
       <td>{{ s.Text }}</td>
       <td>{{ s.Marks }}</td>
       <td>{{ s.AnswerId }}</td>
       <td >
         <select  class="form-select" aria-label="Default select example">
-          <option *ngFor="let ans of s.Answers" [value]="ans.Id" >{{ ans.Text }}</option>
+          <option *ngFor="let ans of s.Answers" [value]="ans.id" >{{ ans.Text }}</option>
         </select>
       </td>
       <td>
-        <button (click)="onRemove(s.Id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+        <button (click)="onRemove(s.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
       </td>
     </tr>
   </tbody>

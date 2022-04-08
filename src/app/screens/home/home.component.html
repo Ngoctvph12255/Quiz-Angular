@@ -1,13 +1,16 @@
-<input type="text" [(ngModel)]="keyword" (keyup)="search()">
+<div class="row m-3">
+  <div class="col">
+    <input type="text" [(ngModel)]="keyword" (keyup)="search()" class="form-control form-control-md"
+      placeholder="Search topics or keywords" />
+
+  </div>
+</div>
 <br>
 <div class="row">
   <article class="col-sm-9">
     <div class="row">
-      <app-subject-item
-        class="col-md-3 col-sm-6"
-        *ngFor="let item of listSubjects"
-        [data-search]="item"
-      ></app-subject-item>
+      <app-subject-item class="col-md-3 col-sm-6" *ngFor="let item of listSubjects" [data-search]="item">
+      </app-subject-item>
     </div>
   </article>
   <aside class="col-md-3 col-sm-2">

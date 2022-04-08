@@ -67,29 +67,29 @@ export class QuizRandomComponent implements OnInit {
     }
     return arr;
   }
-  choose(qId: number, aId: number): void {
+  choose(qid: number, aid: number): void {
     if (this.subject_code) this.disabledSubmit = false;
     let existed = -1;
     this.user_answer.forEach((el: any, index: number) => {
-      if (el.qId == qId) {
+      if (el.qid == qid) {
         existed = index;
       }
     });
 
     if (existed == -1) {
       this.user_answer.push({
-        qId: qId,
-        aId: aId,
+        qid: qid,
+        aid: aid,
       });
     } else {
-      this.user_answer[existed].aId = aId;
+      this.user_answer[existed].aid = aid;
     }
   }
   submit() {
     let correctAnswers = 0;
     this.user_answer.forEach((ans: any) => {
-      let question = this.questions.find((item: any) => item.Id == ans.qId);
-      if (question.AnswerId == ans.aId) {
+      let question = this.questions.find((item: any) => item.id == ans.qid);
+      if (question.AnswerId == ans.aid) {
         correctAnswers++;
       }
     });

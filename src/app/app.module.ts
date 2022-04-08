@@ -1,11 +1,12 @@
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginAdminComponent } from './screens/login-admin/login-admin.component';
 import { LoginComponent } from './screens/login/login.component';
 import { EditStudentComponent } from './components/admin/EditStudent/EditStudent.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { DashboardComponent } from './components/admin/Dashboard/Dashboard.component';
-import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -21,13 +22,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StudentComponent } from './components/admin/Student/Student.component';
 import { AddStudentComponent } from './components/admin/AddStudent/AddStudent.component';
 import { AddQuestionComponent } from './components/admin/AddQuestion/AddQuestion.component';
-import { EditQuestionComponent } from './components/admin/EditQuestion/EditQuestion.component';
 import { EditSubjectComponent } from './components/admin/EditSubject/EditSubject.component';
-import { RouterModule } from '@angular/router';
 import { GetAgePipe } from './helpers/pipes/get-age.pipe';
 import { SubjectComponent } from './components/admin/Subject/Subject.component';
-import { SocialLoginModule, SocialAuthService, GoogleLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
+import { SocialLoginModule, GoogleLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
 import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -50,7 +58,7 @@ import { environment } from 'src/environments/environment';
     AddQuestionComponent,
     EditSubjectComponent,
     LoginComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +69,15 @@ import { environment } from 'src/environments/environment';
     HttpClientModule,
     NgbModule,
     SocialLoginModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
+    NzModalModule,
+    NzButtonModule,
   ],
   providers: [
     {
@@ -75,6 +92,7 @@ import { environment } from 'src/environments/environment';
         ],
       } as SocialAuthServiceConfig,
     },
+    { provide: NZ_I18N, useValue: en_US },
   ],
   bootstrap: [AppComponent],
 })

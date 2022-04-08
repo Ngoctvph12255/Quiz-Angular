@@ -1,11 +1,11 @@
 export interface IQuiz {
-  Id: string;
+  id: string;
   Text: string;
   Marks: number;
   AnswerId: number;
   Answers: [
     {
-      Id: number;
+      id: number;
       Text: string;
     }
   ];

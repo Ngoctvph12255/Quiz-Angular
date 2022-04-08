@@ -2,8 +2,7 @@ import { StudentService } from 'src/app/shared/services/student.service';
 import { IStudent } from './../../../shared/models/student';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { comparePasswordValidator } from 'src/app/helpers/validators/comparePassword';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-AddStudent',
@@ -13,38 +12,45 @@ import { comparePasswordValidator } from 'src/app/helpers/validators/comparePass
 export class AddStudentComponent implements OnInit {
   listOfStudent?: IStudent = {};
   id: string = '';
-  constructor(private studentService: StudentService) {}
+  constructor(
+    private studentService: StudentService,
+    private toastr: ToastrService
+  ) {}
 
   studentForm: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    username: new FormControl('', [Validators.required]),
-    fullname: new FormControl('', [Validators.required]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-    ]),
+    googleId: new FormControl('', [Validators.required]),
+    avatar: new FormControl('', [Validators.required]),
+    // password: new FormControl('', [
+    //   Validators.required,
+    //   Validators.minLength(6),
+    // ]),
+    // confirmPassword: new FormControl('', Validators.required),
     gender: new FormControl(true, [Validators.required]),
-    confirmPassword: new FormControl('', Validators.required),
-    birthday: new FormControl('', Validators.required),
-    schoolfee: new FormControl('', Validators.required),
-    marks: new FormControl('', [Validators.required]),
+    // marks: new FormControl('', [Validators.required]),
   });
   ngOnInit() {
-    this.studentForm.controls['confirmPassword'].valueChanges.subscribe(
-      (data) => {
-        this.studentForm.controls['confirmPassword'].addValidators([
-          comparePasswordValidator(this.studentForm.controls['password'].value),
-        ]);
-      }
-    );
+    // this.studentForm.controls['confirmPassword'].valueChanges.subscribe(
+    //   (data) => {
+    //     this.studentForm.controls['confirmPassword'].addValidators([
+    //       comparePasswordValidator(this.studentForm.controls['password'].value),
+    //     ]);
+    //   }
+    // );
   }
   submitForm() {
     delete this.studentForm.value.confirmPassword;
     const student = { ...this.studentForm.value };
+    if (this.studentForm.invalid) {
+      this.toastr.error('form điền vào không hợp lệ');
+      return;
+    }
     console.log(student);
 
     this.studentService.addNew(student).subscribe((rsp) => {
-      alert('Add successfully!');
+      this.toastr.success('Added successfully !!', 'NgocTV.com');
     });
   }
 }

@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   isLoggedIn: boolean = false;
   loggedInUser: any = '';
   listSubjects: ISubjects[] = [];
-  keyword = 'key home';
+  keyword = '';
 
   @Input('keyword-search') searchData: any;
   node: any;

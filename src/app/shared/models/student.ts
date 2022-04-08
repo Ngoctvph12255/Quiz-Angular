@@ -1,11 +1,10 @@
 export interface IStudent {
   id?: number;
-  username?: string;
-  password?: string;
-  fullname?: string;
+  name?: string;
+  firstName?: string;
+  googleId?: string;
   email?: string;
+  avatar?: string;
   gender?: string;
-  birthday?: string;
-  schoolfee?: string;
   marks?: string;
 }
