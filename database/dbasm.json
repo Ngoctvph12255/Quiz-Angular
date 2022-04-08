@@ -26,6 +26,17 @@
         "LAYO": "3.00",
         "ADAV": "10.00"
       }
+    },
+    {
+      "email": "",
+      "username": "",
+      "fullname": "",
+      "password": "",
+      "gender": true,
+      "birthday": "",
+      "schoolfee": "",
+      "marks": "",
+      "id": 3
     }
   ],
   "subjects": [

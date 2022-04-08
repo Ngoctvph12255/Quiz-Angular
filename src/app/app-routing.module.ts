@@ -17,6 +17,7 @@ import { EditStudentComponent } from './components/admin/EditStudent/EditStudent
 import { AddQuestionComponent } from './components/admin/AddQuestion/AddQuestion.component';
 import { EditSubjectComponent } from './components/admin/EditSubject/EditSubject.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { UploadFormComponent } from './screens/upload-form/upload-form.component';
 
 const routes: Routes = [
   {
@@ -89,6 +90,10 @@ const routes: Routes = [
   {
     path: 'login-admin',
     component: LoginAdminComponent,
+  },
+  {
+    path: 'upload-file',
+    component: UploadFormComponent,
   },
 ];
 

@@ -1,3 +1,4 @@
+import { UploadFormComponent } from './screens/upload-form/upload-form.component';
 import { LoginAdminComponent } from './screens/login-admin/login-admin.component';
 import { LoginComponent } from './screens/login/login.component';
 import { EditStudentComponent } from './components/admin/EditStudent/EditStudent.component';
@@ -29,6 +30,9 @@ import { SubjectComponent } from './components/admin/Subject/Subject.component';
 import { SocialLoginModule, SocialAuthService, GoogleLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
 import { environment } from 'src/environments/environment';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +54,8 @@ import { environment } from 'src/environments/environment';
     AddQuestionComponent,
     EditSubjectComponent,
     LoginComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    UploadFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +66,8 @@ import { environment } from 'src/environments/environment';
     HttpClientModule,
     NgbModule,
     SocialLoginModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [
     {

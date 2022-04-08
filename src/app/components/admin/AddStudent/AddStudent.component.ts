@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { comparePasswordValidator } from 'src/app/helpers/validators/comparePassword';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-AddStudent',
@@ -11,9 +13,14 @@ import { comparePasswordValidator } from 'src/app/helpers/validators/comparePass
   styleUrls: ['./AddStudent.component.css'],
 })
 export class AddStudentComponent implements OnInit {
+  uploadFile: string = '';
+  private basePath = '/uploads';
   listOfStudent?: IStudent = {};
   id: string = '';
-  constructor(private studentService: StudentService) {}
+  constructor(
+    private studentService: StudentService,
+    private fireStorage: AngularFireStorage
+  ) {}
 
   studentForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -46,5 +53,23 @@ export class AddStudentComponent implements OnInit {
     this.studentService.addNew(student).subscribe((rsp) => {
       alert('Add successfully!');
     });
+  }
+
+  chooseFile(event: any) {
+    let file = event.target.files[0];
+    const filePath = `${this.basePath}/${file.name}`;
+    const storageRef = this.fireStorage.ref(filePath);
+    this.fireStorage
+      .upload(filePath, file)
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe((downloadURL) => {
+            console.log(downloadURL);
+            this.uploadFile = downloadURL;
+          });
+        })
+      )
+      .subscribe();
   }
 }
