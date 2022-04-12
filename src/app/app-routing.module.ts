@@ -33,7 +33,6 @@ const routes: Routes = [
       },
       {
         path: 'quiz/:code',
-        // component: QuizComponent,
         component: QuizRandomComponent,
         canActivate: [AuthGuard],
       },
@@ -51,10 +50,12 @@ const routes: Routes = [
       {
         path: '',
         component: DashboardComponent,
+        canActivate: [AuthAdminGuard],
       },
       {
         path: 'sinh-vien',
         component: StudentComponent,
+        canActivate: [AuthAdminGuard],
       },
       {
         path: 'sinh-vien/add',
@@ -69,6 +70,7 @@ const routes: Routes = [
       {
         path: 'mon-hoc',
         component: SubjectComponent,
+        canActivate: [AuthAdminGuard],
       },
       {
         path: 'mon-hoc/add/:id',
