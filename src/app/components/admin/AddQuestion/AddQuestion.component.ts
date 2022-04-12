@@ -64,6 +64,10 @@ export class AddQuestionComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.form.invalid) {
+      this.toastr.error('Form invalid !!', 'NgocTV.com');
+      return;
+    }
     this.form.controls['AnswerId'].setValue(this.ansId);
     const question = {
       ...this.form.value,
