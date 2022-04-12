@@ -1,6 +1,7 @@
 <div class="mt-5 p-5">
-  <button routerLink="/admin/mon-hoc/add" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i> Add the quiz</button>
-  
+  <button routerLink="/admin/mon-hoc/add/{{this.code}}" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i> Add the
+    quiz</button>
+
 </div>
 <table class="table">
   <thead>
@@ -21,10 +22,15 @@
       <td>{{ s.Text }}</td>
       <td>{{ s.Marks }}</td>
       <td>{{ s.AnswerId }}</td>
-      <td >
-        <select  class="form-select" aria-label="Default select example">
-          <option *ngFor="let ans of s.Answers" [value]="ans.id" >{{ ans.Text }}</option>
-        </select>
+      <td>
+        <button nz-button [nzType]="'primary'" (click)="showModal()"><span><i class="bi bi-eye"></i></span></button>
+        <nz-modal [(nzVisible)]="isVisible" nzTitle="Chi tiết câu hỏi" (nzOnCancel)="handleCancel()">
+          <ng-container *nzModalContent >
+            <div  *ngFor="let ans of s.Answers">
+              <p>{{ans.Text}}</p>
+            </div>
+          </ng-container>
+        </nz-modal>
       </td>
       <td>
         <button (click)="onRemove(s.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>

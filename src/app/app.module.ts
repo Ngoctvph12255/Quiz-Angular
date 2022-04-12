@@ -78,6 +78,7 @@ registerLocaleData(en);
     }),
     NzModalModule,
     NzButtonModule,
+    NzModalModule
   ],
   providers: [
     {

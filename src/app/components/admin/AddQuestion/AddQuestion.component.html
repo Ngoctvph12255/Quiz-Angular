@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="col-6 offset-3">
     <h4 class="text-center">Thêm câu hỏi</h4>
     <form>
@@ -46,5 +46,35 @@
         <button class="btn btn-success">Lưu</button>
       </div>
     </form>
+  </div>
+</div>
+ -->
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <form [formGroup]="form"  >
+        <div class="form-group">
+          <label for="">Câu hỏi</label>
+          <input type="text" formControlName="Text" class="form-control" />
+        </div>
+        <br>
+        <button class="btn btn-info" (click)="addCreds()"><i class="bi bi-plus"></i></button>
+        <br>
+        <div formArrayName="questions" *ngFor="let creds of form.controls['questions']?.value; let i = index">
+          <ng-container [formGroupName]="i">
+            <div class="form-group">
+              <label for="">Lựa chọn </label>
+              <input type="text" formControlName="Text" class="form-control" />
+              <input class="form-check-input" (change)="chooseAnswerId(creds.id)" [id]="creds.id" type="radio" [value]="creds.id" [name]="creds.id">
+              <label class="form-check-label" for="AnswerId">
+                Chọn làm đáp án đúng
+              </label>
+              <br>
+            </div>
+          </ng-container>
+        </div>
+        <button (click)="onSubmit()" class="btn btn-success">Save</button>
+      </form>
+    </div>
   </div>
 </div>

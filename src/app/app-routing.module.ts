@@ -71,7 +71,7 @@ const routes: Routes = [
         component: SubjectComponent,
       },
       {
-        path: 'mon-hoc/add',
+        path: 'mon-hoc/add/:id',
         component: AddQuestionComponent,
         canActivate: [AuthAdminGuard],
       },

@@ -9,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./EditSubject.component.css'],
 })
 export class EditSubjectComponent implements OnInit {
-  code: string='';
-  listOfQuiz: IQuiz[]=[];
+  code: string = '';
+  listOfQuiz: IQuiz[] = [];
+  isVisible = false;
+
+  showModal(): void {
+    this.isVisible = true;
+  }
   constructor(private quizService: QuizService, private route: ActivatedRoute) {
     this.route.params.subscribe((parms: any) => {
       console.log(parms);
@@ -23,9 +28,13 @@ export class EditSubjectComponent implements OnInit {
       this.listOfQuiz = data;
     });
   }
-  onRemove(id: string){
-    this.quizService.delete(this.code,id).subscribe(data => {
-      alert("Delete successfully!");
-    })
+  onRemove(id: string) {
+    this.quizService.delete(this.code, id).subscribe((data) => {
+      alert('Delete successfully!');
+    });
+  }
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
   }
 }
