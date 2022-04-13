@@ -32,7 +32,7 @@ export class LoginAdminComponent implements OnInit {
       .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then((resp) => {
         console.log(resp);
-        this.authService.login(resp.email, resp.id).subscribe((data) => {
+        this.authService.loginAdmin(resp.email, resp.id).subscribe((data) => {
           console.log('google login', data);
           if (data) {
             this.router.navigate(['/admin']);

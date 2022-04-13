@@ -65,10 +65,12 @@
             <div class="form-group">
               <label for="">Lựa chọn </label>
               <input type="text" formControlName="Text" class="form-control" />
+              <div class="form-check">
               <input class="form-check-input" (change)="chooseAnswerId(creds.id)" [id]="creds.id" type="radio" [value]="creds.id" [name]="creds.id">
-              <label class="form-check-label" for="AnswerId">
+              <label class="form-check-label" for="{{creds.id}}">
                 Chọn làm đáp án đúng
               </label>
+              </div>
               <br>
             </div>
           </ng-container>

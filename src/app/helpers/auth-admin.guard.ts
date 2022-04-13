@@ -7,7 +7,7 @@ import { CanActivate, Router } from '@angular/router';
 export class AuthAdminGuard implements CanActivate {
   constructor(private router: Router) {}
   canActivate(): boolean {
-    const loggedInUser = JSON.parse(localStorage.getItem('login_user') || '{}');
+    const loggedInUser = JSON.parse(localStorage.getItem('login_admin') || '{}');
     if (
       loggedInUser.email == undefined ||
       loggedInUser.email == '' ||

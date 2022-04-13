@@ -10,20 +10,32 @@
       "gender": "true",
       "marks": {
         "LAYO": "9.00",
-        "ADAV": "3.00",
+        "ADAV": "2.00",
         "ADBS": "10.00"
       }
     },
     {
       "name": "NgocTV",
       "firstName": "Trịnh Văn Ngọc Ex",
-      "avatar": "https://lh3.googleusercontent.com/a/AATXAJyjU_K31BpMtmw69N5QqCULTHgmWgIDBcu3LXR4=s96-c",
+      "email": "ngoctvph12255@gmail.com",
+      "avatar": "https://firebasestorage.googleapis.com/v0/b/we16301-angular-2c17f.appspot.com/o/uploads%2F18.10.2020_ngauHung.png?alt=media&token=f97815de-511a-4a2f-9639-69766a0f506e",
       "gender": false,
+      "googleId": "116426613490584957953",
       "marks": {
         "LAYO": "9.80",
         "ADAV": "10.00"
       },
       "id": 2
+    },
+    {
+      "name": "SDFGHJN",
+      "firstName": "ngoctVFytguahi",
+      "email": "sdfdf@scv.sdvf",
+      "avatar": "https://lh3.googleusercontent.com/a/AATXAJyjU_K31BpMtmw69N5QqCULTHgmWgIDBcu3LXR4=s96-c",
+      "gender": false,
+      "googleId": "456789",
+      "marks": 0,
+      "id": 3
     }
   ],
   "subjects": [

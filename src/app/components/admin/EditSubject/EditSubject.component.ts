@@ -24,14 +24,21 @@ export class EditSubjectComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.onGetAll();
+  }
+
+  onGetAll() {
     this.quizService.list(this.code).subscribe((data) => {
       this.listOfQuiz = data;
     });
   }
   onRemove(id: string) {
-    this.quizService.delete(this.code, id).subscribe((data) => {
-      alert('Delete successfully!');
-    });
+    if (window.confirm('Bạn Có muốn xóa không?')) {
+      this.quizService.delete(this.code, id).subscribe((data) => {
+        this.onGetAll();
+        alert('Delete successfully!');
+      });
+    }
   }
   handleCancel(): void {
     console.log('Button cancel clicked!');

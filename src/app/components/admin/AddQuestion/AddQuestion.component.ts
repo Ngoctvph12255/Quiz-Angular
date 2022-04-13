@@ -64,15 +64,15 @@ export class AddQuestionComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.form.invalid) {
-      this.toastr.error('Form invalid !!', 'NgocTV.com');
-      return;
-    }
     this.form.controls['AnswerId'].setValue(this.ansId);
     const question = {
       ...this.form.value,
     };
     console.log(question);
+    if (this.form.invalid) {
+      this.toastr.error('Form invalid !!', 'NgocTV.com');
+      return;
+    }
     this.quizService.addNew(this.code, question).subscribe((resp) => {
       this.toastr.success('Created successfully !!', 'NgocTV.com');
     });

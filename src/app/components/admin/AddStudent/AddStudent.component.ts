@@ -27,13 +27,13 @@ export class AddStudentComponent implements OnInit {
     firstName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     googleId: new FormControl('', [Validators.required]),
-    avatar: new FormControl('', [Validators.required]),
+    avatar: new FormControl(this.uploadFile),
     // password: new FormControl('', [
     //   Validators.required,
     //   Validators.minLength(6),
     // ]),
     // confirmPassword: new FormControl('', Validators.required),
-    gender: new FormControl(true, [Validators.required]),
+    gender: new FormControl(true),
     // marks: new FormControl('', [Validators.required]),
   });
   ngOnInit() {

@@ -38,6 +38,29 @@ export class AuthService {
         })
       );
   }
+  loginAdmin(email: string, googleId: string): Observable<any> {
+    return this.http
+      .get<any>(
+        `${environment.student_api}?email=${email}&googleId=${googleId}`
+      )
+      .pipe(
+        // can thieu du lieu tra  ve observable
+        map((item) => {
+          // bien doi du lieu tra ve thanh mot du lieu khac
+          // console.log(item);
+          // return item;
+
+          if (item.length > 0) {
+            this.logInUser.next(item[0]);
+            localStorage.setItem('login_admin', JSON.stringify(item[0]));
+            return item[0];
+          }
+          localStorage.removeItem('login_admin');
+          this.logInUser.next({});
+          return null;
+        })
+      );
+  }
 
   logout(): void {
     localStorage.removeItem('login_user');
@@ -45,7 +68,7 @@ export class AuthService {
   }
 
   logoutAdmin(): void {
-    localStorage.removeItem('login_user');
+    localStorage.removeItem('login_admin');
     this.router.navigate(['/login-admin']);
   }
 }

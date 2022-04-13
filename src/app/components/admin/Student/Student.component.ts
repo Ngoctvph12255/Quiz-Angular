@@ -26,19 +26,17 @@ export class StudentComponent implements OnInit {
   onGet() {
     this.studentService.getAll().subscribe((data) => {
       this.listOfStudent = data;
-      console.log('data');
-
       console.log(this.listOfStudent);
     });
   }
   onRemove(student: any) {
-    this.onShowConfirm(student.id);
+    this.onShowConfirm(student);
   }
-  onShowConfirm(id: string) {
+  onShowConfirm(student: any) {
     this.confirmModal = this.modal.confirm({
-      nzTitle: 'Are you sure to delete ' + id + '?',
+      nzTitle: 'Do you want to delete ' + student.name + '?',
       nzOnOk: () =>
-        this.studentService.remove(id).subscribe((data) => {
+        this.studentService.remove(student.id).subscribe((data) => {
           this.toastr.success('Delete it successfully !!', 'NgocTV.com'),
             console.log(data);
           this.onGet();

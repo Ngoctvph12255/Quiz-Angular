@@ -37,11 +37,11 @@ export class EditStudentComponent implements OnInit {
       name: [this.listOfStudent?.name || '', [Validators.required]],
       firstName: [this.listOfStudent?.firstName || '', [Validators.required]],
       email: [
-        { value: this.listOfStudent?.email || '', disabled: true },
+        { value: this.listOfStudent?.email || '', disabled: false },
         [Validators.required],
       ],
       avatar: [this.listOfStudent?.avatar || ''],
-      gender: [this.listOfStudent?.gender || false, [Validators.required]],
+      gender: [this.listOfStudent?.gender || false],
       googleId: [
         { value: this.listOfStudent?.googleId || '', disabled: false },
         [Validators.required],
