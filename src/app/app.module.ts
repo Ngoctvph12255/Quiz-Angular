@@ -34,6 +34,9 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 
 registerLocaleData(en);
 
@@ -78,7 +81,9 @@ registerLocaleData(en);
     }),
     NzModalModule,
     NzButtonModule,
-    NzModalModule
+    NzModalModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
   ],
   providers: [
     {

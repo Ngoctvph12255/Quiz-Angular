@@ -3,6 +3,8 @@ import { IStudent } from './../../../shared/models/student';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-AddStudent',
@@ -10,9 +12,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./AddStudent.component.css'],
 })
 export class AddStudentComponent implements OnInit {
+  uploadFile: string = '';
+  private basePath = '/uploads';
   listOfStudent?: IStudent = {};
   id: string = '';
   constructor(
+    private fireStorage: AngularFireStorage,
     private studentService: StudentService,
     private toastr: ToastrService
   ) {}
@@ -41,6 +46,7 @@ export class AddStudentComponent implements OnInit {
     // );
   }
   submitForm() {
+    this.studentForm.controls['avatar'].setValue(this.uploadFile);
     delete this.studentForm.value.confirmPassword;
     const student = { ...this.studentForm.value };
     if (this.studentForm.invalid) {
@@ -52,5 +58,22 @@ export class AddStudentComponent implements OnInit {
     this.studentService.addNew(student).subscribe((rsp) => {
       this.toastr.success('Added successfully !!', 'NgocTV.com');
     });
+  }
+  chooseFile(event: any) {
+    let file = event.target.files[0];
+    const filePath = `${this.basePath}/${file.name}`;
+    const storageRef = this.fireStorage.ref(filePath);
+    this.fireStorage
+      .upload(filePath, file)
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe((downloadURL) => {
+            console.log(downloadURL);
+            this.uploadFile = downloadURL;
+          });
+        })
+      )
+      .subscribe();
   }
 }

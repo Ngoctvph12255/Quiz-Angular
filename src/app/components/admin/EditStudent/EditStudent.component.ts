@@ -6,6 +6,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { comparePasswordValidator } from 'src/app/helpers/validators/comparePassword';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-EditStudent',
@@ -13,10 +15,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./EditStudent.component.css'],
 })
 export class EditStudentComponent implements OnInit {
+  uploadFile: string = '';
+  private basePath = '/uploads';
   studentForm: any;
   listOfStudent: any = {};
   id: string = '';
   constructor(
+    private fireStorage: AngularFireStorage,
     private studentService: StudentService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -29,30 +34,19 @@ export class EditStudentComponent implements OnInit {
 
   private initForm(): void {
     this.studentForm = this.formBuilder.group({
-      name: [
-        this.listOfStudent?.name || '',
-        [Validators.required, Validators.minLength(5)],
-      ],
+      name: [this.listOfStudent?.name || '', [Validators.required]],
       firstName: [this.listOfStudent?.firstName || '', [Validators.required]],
       email: [
         { value: this.listOfStudent?.email || '', disabled: true },
         [Validators.required],
       ],
-      avatar: [this.listOfStudent?.avatar || '', [Validators.required]],
+      avatar: [this.listOfStudent?.avatar || ''],
       gender: [this.listOfStudent?.gender || false, [Validators.required]],
       googleId: [
-        { value: this.listOfStudent?.googleId || '', disabled: true },
+        { value: this.listOfStudent?.googleId || '', disabled: false },
         [Validators.required],
       ],
-      // birthday: [
-      //   moment(this.listOfStudent?.birthday).format('yyyy-MM-DD') || '',
-      //   [Validators.required],
-      // ],
-      // gender: [this.listOfStudent?.gender || 'false'],
-      marks: [
-        this.listOfStudent?.marks || '',
-        [Validators.required, Validators.maxLength(100)],
-      ],
+      marks: [this.listOfStudent?.marks || 0],
     });
   }
 
@@ -74,6 +68,7 @@ export class EditStudentComponent implements OnInit {
     this.initForm();
   }
   submitForm() {
+    this.studentForm.controls['avatar'].setValue(this.uploadFile);
     delete this.studentForm?.value.confirmPassword;
     const student = { ...this.studentForm?.value };
     console.log(student);
@@ -84,5 +79,22 @@ export class EditStudentComponent implements OnInit {
     this.studentService.update(student, this.id).subscribe((rsp) => {
       this.toastr.success('Updated successfully !!', 'NgocTV.com');
     });
+  }
+  chooseFile(event: any) {
+    let file = event.target.files[0];
+    const filePath = `${this.basePath}/${file.name}`;
+    const storageRef = this.fireStorage.ref(filePath);
+    this.fireStorage
+      .upload(filePath, file)
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe((downloadURL) => {
+            console.log(downloadURL);
+            this.uploadFile = downloadURL;
+          });
+        })
+      )
+      .subscribe();
   }
 }
