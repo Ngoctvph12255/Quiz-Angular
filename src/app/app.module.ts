@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import { EditQuestionComponent } from './components/admin/EditQuestion/EditQuestion.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+=======
+import { UploadFormComponent } from './screens/upload-form/upload-form.component';
+>>>>>>> main
 import { LoginAdminComponent } from './screens/login-admin/login-admin.component';
 import { LoginComponent } from './screens/login/login.component';
 import { EditStudentComponent } from './components/admin/EditStudent/EditStudent.component';
@@ -41,6 +45,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 registerLocaleData(en);
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +81,7 @@ registerLocaleData(en);
     HttpClientModule,
     NgbModule,
     SocialLoginModule,
+<<<<<<< HEAD
     FontAwesomeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
@@ -86,6 +94,10 @@ registerLocaleData(en);
     NzModalModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
+=======
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
+>>>>>>> main
   ],
   providers: [
     {
