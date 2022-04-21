@@ -1,3 +1,87 @@
-<p>
-  EditQuestion works!
-</p>
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-4 offset-3" style="margin-top: 120px; margin-left: 50px;">
+      <img [src]="this.listOfStudent?.avatar" width="200">
+    </div>
+    <div class="col-4">
+      <h4 class="text-center">Edit Information Student</h4>
+      <form [formGroup]="this.studentForm">
+        <div class="form-group">
+          <label for="">User name</label>
+          <input type="text" formControlName="name" class="form-control" />
+          <div *ngIf="
+            studentForm.controls['name'].errors &&
+            (studentForm.controls['name'].touched ||
+              studentForm.controls['name'].dirty)
+          ">
+            <span class="text-danger" *ngIf="studentForm.controls['name'].hasError('required')">Hãy nhập tên đăng nhập
+              của
+              bạn!</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Full name</label>
+          <input type="text" formControlName="firstName" class="form-control" />
+          <div *ngIf="
+            studentForm.controls['firstName'].errors &&
+            (studentForm.controls['firstName'].touched ||
+              studentForm.controls['firstName'].dirty)
+          ">
+            <span class="text-danger" *ngIf="studentForm.controls['firstName'].hasError('required')">Hãy nhập họ tên của
+              bạn!</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">email</label>
+          <input type="text" formControlName="email" class="form-control" />
+          <div *ngIf="
+            studentForm.controls['email'].errors &&
+            (studentForm.controls['email'].touched ||
+              studentForm.controls['email'].dirty)
+          ">
+            <span class="text-danger" *ngIf="studentForm.controls['email'].hasError('required')">Hãy nhập email!</span>
+            <span class="text-danger" *ngIf="studentForm.controls['email'].hasError('email')">Không đúng định dạng
+              email!</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Avatar</label>
+          <input type="file" (change)="chooseFile($event)" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="">Google Id</label>
+          <input type="text" formControlName="googleId" class="form-control" />
+          <div *ngIf="
+                    studentForm.controls['googleId'].errors &&
+                    (studentForm.controls['googleId'].touched ||
+                      studentForm.controls['googleId'].dirty)
+                  ">
+            <span class="text-danger" *ngIf="studentForm.controls['googleId'].hasError('required')">Hãy nhập googleId
+              của
+              bạn!</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Gender</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" formControlName="gender" [value]="true" />
+            <label class="form-check-label" for="flexRadioDefault1">
+              Male
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" formControlName="gender" [value]="false" />
+            <label class="form-check-label" for="flexRadioDefault2">
+              Female
+            </label>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <button (click)="submitForm()" class="btn btn-outline-success"><i class="fas fa-save"></i> Save</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div> -->

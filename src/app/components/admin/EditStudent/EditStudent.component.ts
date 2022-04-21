@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from 'src/app/shared/services/student.service';
 import { IStudent } from './../../../shared/models/student';
 import { Component, OnInit } from '@angular/core';
@@ -25,7 +25,8 @@ export class EditStudentComponent implements OnInit {
     private studentService: StudentService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private routerRedirect: Router
   ) {
     this.route.params.subscribe((parms) => {
       this.id = parms['id'];
@@ -60,24 +61,25 @@ export class EditStudentComponent implements OnInit {
         ]);
       }
     );
-    this.studentService.findById(this.id).subscribe((data) => {
+    this.studentService.findById(this.id).subscribe((data: any) => {
       this.listOfStudent = data;
-      console.log('data:' + this.listOfStudent);
+      console.log("avatr");
+      console.log(this.listOfStudent.avatar);
       this.initForm();
     });
     this.initForm();
   }
   submitForm() {
     this.studentForm.controls['avatar'].setValue(this.uploadFile);
-    delete this.studentForm?.value.confirmPassword;
     const student = { ...this.studentForm?.value };
-    console.log(student);
+    delete this.studentForm?.value.confirmPassword;
     if (this.studentForm.invalid) {
       this.toastr.error('form điền vào không hợp lệ');
       return;
     }
     this.studentService.update(student, this.id).subscribe((rsp) => {
       this.toastr.success('Updated successfully !!', 'NgocTV.com');
+      this.routerRedirect.navigate(['/admin/sinh-vien']);
     });
   }
   chooseFile(event: any) {

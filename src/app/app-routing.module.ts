@@ -1,3 +1,4 @@
+import { EditQuestionComponent } from './components/admin/EditQuestion/EditQuestion.component';
 import { AuthAdminGuard } from './helpers/auth-admin.guard';
 import { LoginAdminComponent } from './screens/login-admin/login-admin.component';
 import { LoginComponent } from './screens/login/login.component';
@@ -80,6 +81,11 @@ const routes: Routes = [
       {
         path: 'mon-hoc/edit/:id',
         component: EditSubjectComponent,
+        canActivate: [AuthAdminGuard],
+      },
+      {
+        path: 'quiz/edit/:id/:code',
+        component: EditQuestionComponent,
         canActivate: [AuthAdminGuard],
       },
     ],

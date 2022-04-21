@@ -26,4 +26,7 @@ export class QuizService {
   delete(code: string, id: string): Observable<any> {
     return this.http.delete<any>(`${environment.quiz_api}/${code}/${id}`);
   }
+  update(code: string, id: string, data: any): Observable<any> {
+    return this.http.put<any>(`${environment.quiz_api}/${code}/${id}`, data);
+  }
 }

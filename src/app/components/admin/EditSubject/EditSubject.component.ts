@@ -1,5 +1,5 @@
 import { IQuiz } from './../../../shared/models/quiz';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from './../../../shared/services/quiz.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,7 +16,7 @@ export class EditSubjectComponent implements OnInit {
   showModal(): void {
     this.isVisible = true;
   }
-  constructor(private quizService: QuizService, private route: ActivatedRoute) {
+  constructor(private quizService: QuizService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe((parms: any) => {
       console.log(parms);
       this.code = parms['id'];
@@ -43,5 +43,8 @@ export class EditSubjectComponent implements OnInit {
   handleCancel(): void {
     console.log('Button cancel clicked!');
     this.isVisible = false;
+  }
+  onUpdate(e: any){
+    this.router.navigate(['/admin/quiz/edit/'+ e+ '/'+ this.code])
   }
 }

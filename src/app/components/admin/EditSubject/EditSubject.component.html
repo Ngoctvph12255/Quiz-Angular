@@ -13,6 +13,7 @@
       <th scope="col">AnswerId</th>
       <th scope="col">Answers</th>
       <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -34,6 +35,8 @@
       </td>
       <td>
         <button (click)="onRemove(s.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+      </td><td>
+        <button (click)="onUpdate(s.id)" class="btn btn-danger"><i class="bi bi-pencil"></i></button>
       </td>
     </tr>
   </tbody>

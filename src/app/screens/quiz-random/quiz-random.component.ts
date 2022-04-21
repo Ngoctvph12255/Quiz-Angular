@@ -79,7 +79,7 @@ export class QuizRandomComponent implements OnInit {
     if (existed == -1) {
       this.user_answer.push({
         qid: qid,
-        aid: aid,
+        aid: aid,envi
       });
     } else {
       this.user_answer[existed].aid = aid;

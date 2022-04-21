@@ -4,36 +4,36 @@
       "id": 1,
       "name": "ngoctv",
       "firstName": "Trịnh Văn Ngọc",
-      "email": "ngoctvph12255@fpt.edu.vn",
+      "email": "ngoctvph@fpt.edu.vn",
       "googleId": "102073770262484238137",
       "avatar": "https://lh3.googleusercontent.com/a/AATXAJzK1Y23lpPZUQKGhatx460B2p65w8AL7RFsapgV=s96-c",
       "gender": "true",
       "marks": {
         "LAYO": "9.00",
-        "ADAV": "2.00",
+        "ADAV": "1.00",
         "ADBS": "10.00"
       }
     },
     {
       "name": "NgocTV",
       "firstName": "Trịnh Văn Ngọc Ex",
-      "email": "ngoctvph12255@gmail.com",
-      "avatar": "https://firebasestorage.googleapis.com/v0/b/we16301-angular-2c17f.appspot.com/o/uploads%2F18.10.2020_ngauHung.png?alt=media&token=f97815de-511a-4a2f-9639-69766a0f506e",
+      "email": "ngoctvp@gmail.com",
+      "avatar": "https://firebasestorage.googleapis.com/v0/b/we16301-angular-2c17f.appspot.com/o/uploads%2Fuser02.jpg?alt=media&token=9179b9f6-70c1-40a8-84ad-0acff575659b",
       "gender": false,
-      "googleId": "116426613490584957953",
+      "googleId": "234567",
       "marks": {
         "LAYO": "9.80",
-        "ADAV": "10.00"
+        "ADAV": "1.00"
       },
       "id": 2
     },
     {
-      "name": "SDFGHJN",
-      "firstName": "ngoctVFytguahi",
-      "email": "sdfdf@scv.sdvf",
-      "avatar": "https://lh3.googleusercontent.com/a/AATXAJyjU_K31BpMtmw69N5QqCULTHgmWgIDBcu3LXR4=s96-c",
-      "gender": false,
-      "googleId": "456789",
+      "name": "ngoctvsd",
+      "firstName": "trinhVanNgocUpdate",
+      "email": "ngocTvph122@gmail.com",
+      "avatar": "https://firebasestorage.googleapis.com/v0/b/we16301-angular-2c17f.appspot.com/o/uploads%2Fuser01.jpg?alt=media&token=4be009a3-1cc9-4b14-8777-3b72a2dddac3",
+      "gender": true,
+      "googleId": "2354657324354667",
       "marks": 0,
       "id": 3
     }
@@ -500,30 +500,6 @@
         {
           "id": 104173,
           "Text": "3"
-        }
-      ]
-    },
-    {
-      "id": 25120,
-      "Text": "Lệnh sau dùng để làm gì?                                                                                   <receiver             android:name=\".MyCallReceiver\"             android:exported=\"false\" >  </receiver>",
-      "Marks": 1,
-      "AnswerId": 104177,
-      "Answers": [
-        {
-          "id": 104174,
-          "Text": "Disable receiver MyCallReceiver"
-        },
-        {
-          "id": 104175,
-          "Text": "Khai báo MyCallReceiver là broadcast hệ thống"
-        },
-        {
-          "id": 104176,
-          "Text": "Cho phép ứng dụng Calendar của hệ thống gửi broadcast tới receiver MyCallReceiver"
-        },
-        {
-          "id": 104177,
-          "Text": "Cấm ứng dụng khác gửi broadcast tới receiver MyCallReceiver"
         }
       ]
     },
@@ -1942,6 +1918,26 @@
           "Text": "Maven SDK"
         }
       ]
+    },
+    {
+      "Text": "ThemcauHoi",
+      "Marks": 1,
+      "AnswerId": 3747,
+      "questions": [
+        {
+          "id": 2507,
+          "Text": "q"
+        },
+        {
+          "id": 3747,
+          "Text": "x"
+        },
+        {
+          "id": 1208,
+          "Text": "x"
+        }
+      ],
+      "id": 25183
     }
   ],
   "ADBS": [

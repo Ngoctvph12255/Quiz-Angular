@@ -5,17 +5,17 @@ const baseAPIURL = 'http://localhost:3000';
 export const environment = {
   production: false,
   GOOGLE_CLIENT_ID:
-    '1008431745336-smjbba8kv5hn0cuttmbm6s1bf8gnblhi.apps.googleusercontent.com',
+    '',
   student_api: `${baseAPIURL}/students`,
   subject_api: `${baseAPIURL}/subjects`,
   quiz_api: `${baseAPIURL}`,
   firebase: {
-    apiKey: 'AIzaSyBCmUS4QDe6F3oz8m1mxY-ppMR18dPgJFM',
-    authDomain: 'we16301-angular-2c17f.firebaseapp.com',
-    projectId: 'we16301-angular-2c17f',
+    apiKey: '',
+    authDomain: '',
+    projectId: '',
     storageBucket: 'we16301-angular-2c17f.appspot.com',
-    messagingSenderId: '890346717887',
-    appId: '1:890346717887:web:39f3e2182af6c7306a7c0a',
+    messagingSenderId: '',
+    appId: '',
     measurementId: 'G-0CG4BDHRN0',
   },
 };

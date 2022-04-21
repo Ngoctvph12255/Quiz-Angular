@@ -1,3 +1,4 @@
+import { EditQuestionComponent } from './components/admin/EditQuestion/EditQuestion.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginAdminComponent } from './screens/login-admin/login-admin.component';
@@ -60,6 +61,7 @@ registerLocaleData(en);
     EditStudentComponent,
     AddQuestionComponent,
     EditSubjectComponent,
+    EditQuestionComponent,
     LoginComponent,
     LoginAdminComponent,
   ],
